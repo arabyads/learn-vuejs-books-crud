@@ -22,10 +22,20 @@ tr:nth-child(even) {
       <tr>
         <th>Book</th>
         <th>Author</th>
+        <th>Action</th>
       </tr>
       <tr v-for="book in books" :key="book.id">
-        <td>{{ book.name }}</td>
+        <td>
+          {{ book.name }}
+        </td>
         <td>{{ book.author }}</td>
+        <td>
+          <router-link :to="{ name: 'Show', params: { id: book.id } }">
+            <button type="button" class="cancelbtn">Show</button>
+          </router-link>
+          <button type="button" class="cancelbtn">Edit</button>
+          <button type="button" class="deletebtn">Delete</button>
+        </td>
       </tr>
     </table>
   </div>
@@ -42,14 +52,19 @@ export default {
           author: "Jenny Lawson",
         },
         {
-          id: 1,
+          id: 2,
           name: "The Good Sister",
           author: "Sally Hepworth",
         },
         {
-          id: 1,
+          id: 3,
           name: "Of Women and Salt",
           author: "Gabriela Garcia",
+        },
+        {
+          id: 4,
+          name: "The Hill We Climb: An Inaugural Poem for the Country",
+          author: "Amanda Gorman ",
         },
       ],
     };
