@@ -5,7 +5,8 @@ table {
   width: 100%;
 }
 
-td, th {
+td,
+th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
@@ -18,50 +19,40 @@ tr:nth-child(even) {
 <template>
   <div class="home">
     <table>
-    <tr>
-      <th>Book</th>
-      <th>Author</th>
-      <th>Release date</th>
-    </tr>
-    <tr>
-      <td>Alfreds Futterkiste</td>
-      <td>Maria Anders</td>
-      <td>Germany</td>
-    </tr>
-    <tr>
-      <td>Centro comercial Moctezuma</td>
-      <td>Francisco Chang</td>
-      <td>Mexico</td>
-    </tr>
-    <tr>
-      <td>Ernst Handel</td>
-      <td>Roland Mendel</td>
-      <td>Austria</td>
-    </tr>
-    <tr>
-      <td>Island Trading</td>
-      <td>Helen Bennett</td>
-      <td>UK</td>
-    </tr>
-    <tr>
-      <td>Laughing Bacchus Winecellars</td>
-      <td>Yoshi Tannamuri</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <td>Magazzini Alimentari Riuniti</td>
-      <td>Giovanni Rovelli</td>
-      <td>Italy</td>
-    </tr>
-  </table>
+      <tr>
+        <th>Book</th>
+        <th>Author</th>
+      </tr>
+      <tr v-for="book in books" :key="book.id">
+        <td>{{ book.name }}</td>
+        <td>{{ book.author }}</td>
+      </tr>
+    </table>
   </div>
 </template>
 
 <script>
-  export default{
-    data(){
-
-    }
-  }
-
+export default {
+  data() {
+    return {
+      books: [
+        {
+          id: 1,
+          name: "Broken (in the best possible way)",
+          author: "Jenny Lawson",
+        },
+        {
+          id: 1,
+          name: "The Good Sister",
+          author: "Sally Hepworth",
+        },
+        {
+          id: 1,
+          name: "Of Women and Salt",
+          author: "Gabriela Garcia",
+        },
+      ],
+    };
+  },
+};
 </script>
