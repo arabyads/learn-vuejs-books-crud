@@ -43,31 +43,6 @@ tr:nth-child(even) {
 
 <script>
 export default {
-  data() {
-    return {
-      books: [
-        {
-          id: 1,
-          name: "Broken (in the best possible way)",
-          author: "Jenny Lawson",
-        },
-        {
-          id: 2,
-          name: "The Good Sister",
-          author: "Sally Hepworth",
-        },
-        {
-          id: 3,
-          name: "Of Women and Salt",
-          author: "Gabriela Garcia",
-        },
-        {
-          id: 4,
-          name: "The Hill We Climb: An Inaugural Poem for the Country",
-          author: "Amanda Gorman ",
-        },
-      ],
-    };
-  },
+  props:['books']
 };
 </script>

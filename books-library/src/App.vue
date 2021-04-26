@@ -3,7 +3,7 @@
     <div id="nav">
       <router-link to="/">Books</router-link>
     </div>
-    <router-view />
+    <router-view :books="books" />
   </div>
 </template>
 
@@ -29,3 +29,38 @@
   color: #42b983;
 }
 </style>
+
+<script>
+export default {
+  components: {},
+
+  props: {},
+
+  data() {
+    return {
+      books: [
+        {
+          id: 1,
+          name: "Broken (in the best possible way)",
+          author: "Jenny Lawson",
+        },
+        {
+          id: 2,
+          name: "The Good Sister",
+          author: "Sally Hepworth",
+        },
+        {
+          id: 3,
+          name: "Of Women and Salt",
+          author: "Gabriela Garcia",
+        },
+        {
+          id: 4,
+          name: "The Hill We Climb: An Inaugural Poem for the Country",
+          author: "Amanda Gorman ",
+        },
+      ],
+    };
+  },
+};
+</script>
