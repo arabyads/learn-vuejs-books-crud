@@ -3,7 +3,11 @@
     <div id="nav">
       <router-link to="/">Books</router-link>
     </div>
-    <router-view :books="books" />
+    <router-view
+      :books="books"
+      @delete-book="deleteBookListner"
+      @add-new-book="addNewBookListner"
+    />
   </div>
 </template>
 
@@ -31,6 +35,8 @@
 </style>
 
 <script>
+import { v4 as uuidv4 } from 'uuid';
+
 export default {
   components: {},
 
@@ -40,27 +46,42 @@ export default {
     return {
       books: [
         {
-          id: 1,
+          id: uuidv4(),
           name: "Broken (in the best possible way)",
           author: "Jenny Lawson",
         },
         {
-          id: 2,
+          id: uuidv4(),
           name: "The Good Sister",
           author: "Sally Hepworth",
         },
         {
-          id: 3,
+          id: uuidv4(),
           name: "Of Women and Salt",
           author: "Gabriela Garcia",
         },
         {
-          id: 4,
+          id: uuidv4(),
           name: "The Hill We Climb: An Inaugural Poem for the Country",
           author: "Amanda Gorman ",
         },
       ],
     };
+  },
+
+  methods: {
+    deleteBookListner(id) {
+      this.books = this.books.filter(function (book) {
+        if (book.id != id) {
+          return book;
+        }
+      });
+    },
+
+    addNewBookListner(book) {
+      this.books.push({ id: uuidv4(), name: book.name, author: book.author });
+      this.$router.push({name:"List"});
+    },
   },
 };
 </script>
