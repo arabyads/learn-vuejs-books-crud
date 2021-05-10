@@ -8,7 +8,11 @@
 <script>
 export default {
   components: {},
-  props: ["books"],
+  computed: {
+    books() {
+      return this.$store.state.books;
+    },
+  },
   data() {
     return {};
   },

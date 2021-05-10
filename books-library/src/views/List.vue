@@ -19,7 +19,7 @@ tr:nth-child(even) {
 <template>
   <div class="home">
     <router-link :to="{ name: 'Create' }">
-      <button type="button" class="deletebtn"> Insert New Book </button>
+      <button type="button" class="deletebtn">Insert New Book</button>
     </router-link>
     <table>
       <tr>
@@ -50,10 +50,14 @@ tr:nth-child(even) {
 
 <script>
 export default {
-  props: ["books"],
+  computed: {
+    books() {
+      return this.$store.state.books;
+    },
+  },
   methods: {
     deleteBook(id) {
-      this.$emit("delete-book", id); // Question here can i pass alot of params here or just the id ? yes by comma or object
+      this.$store.dispatch("deleteBook", id);
     },
   },
 };
